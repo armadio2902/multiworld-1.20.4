@@ -3,7 +3,8 @@
 # Multiworld ![](http://cf.way2muchnoise.eu/multiworld-mod.svg)
 The Multiworld Mod - Adds support for creating & teleporting to multiple worlds. 
 
- 
+Download from [here](https://github.com/armadio2902/multiworld-1.20.4/releases)
+
 ## Command Usage:
 <img src="https://user-images.githubusercontent.com/16439221/147537366-4e4f6cd3-e2cd-433a-b801-d7169a4f21d2.png" width="500">
 
