@@ -1,8 +1,8 @@
 import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
-    id ("fabric-loom") version "1.3-SNAPSHOT"
-    id ("maven-publish")
+    id ("fabric-loom") version "1.5-SNAPSHOT"
+    //id ("maven-publish")
 	id ("java-library")
 }
 
@@ -101,7 +101,7 @@ tasks.register<Copy>("copyReport2") {
     into("${project.rootDir}/output")
 }
 
-
+/* 
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -132,3 +132,4 @@ publishing {
         }
     }
 }
+*/

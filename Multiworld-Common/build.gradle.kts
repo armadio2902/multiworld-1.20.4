@@ -3,13 +3,14 @@ import net.fabricmc.loom.task.RemapJarTask
 plugins {
 
     id ("java-library")
-    id ("maven-publish")
-	id ("dev.architectury.loom") version "1.3-SNAPSHOT"
+    //id ("maven-publish")
+	id ("dev.architectury.loom") version "1.5-SNAPSHOT"
 	id ("architectury-plugin") version "3.4-SNAPSHOT"
 }
 
 architectury {
-    common("fabric", "forge")
+    common("fabric")
+    //common("fabric", "forge")
 }
 
 java {
@@ -35,11 +36,6 @@ repositories {
 tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INCLUDE }
 
 dependencies {
-    //minecraft ("com.mojang:minecraft:1.17.1")
-    //mappings ("net.fabricmc:yarn:1.17.1+build.65:v2")
-    //modImplementation ("net.fabricmc:fabric-loader:0.14.9")
-    //modImplementation "net.fabricmc.fabric-api:fabric-api:0.28.5+1.15"
-	
 	// 1.19.4
     minecraft("com.mojang:minecraft:1.19.4") 
     mappings("net.fabricmc:yarn:1.19.4+build.1:v2")

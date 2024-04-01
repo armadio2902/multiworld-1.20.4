@@ -13,38 +13,47 @@ java {
 
 base {
     archivesBaseName = "Multiworld-Fabric"
-    version = "bundle"
+    version = "1.20.4"
     group = "me.isaiah.mods"
 }
 
 dependencies {
-
 	// 1.20.4
     minecraft("com.mojang:minecraft:1.20.4") 
     mappings("net.fabricmc:yarn:1.20.4+build.3")
     modImplementation("net.fabricmc:fabric-loader:0.15.7")
 	
-	// bundle jars
-	//include(project(":Multiworld-Fabric-1.18.2"))
-	include(project(":Multiworld-Fabric-1.19.2"))
-	include(project(":Multiworld-Fabric-1.19.4"))
-	include(project(":Multiworld-Fabric-1.20"))
-    include(project(":Multiworld-Fabric-1.20.4"))
+	include("xyz.nucleoid:fantasy:0.5.0+1.20.4")
+	modImplementation("xyz.nucleoid:fantasy:0.5.0+1.20.4")
+	modImplementation("curse.maven:cyber-permissions-407695:4640544")
+	modImplementation("me.lucko:fabric-permissions-api:0.2-SNAPSHOT")
+	modImplementation("net.fabricmc.fabric-api:fabric-api-deprecated:0.96.4+1.20.4")
+	
+	setOf(
+		"fabric-api-base",
+		//"fabric-command-api-v1",
+		"fabric-lifecycle-events-v1",
+		"fabric-networking-api-v1"
+	).forEach {
+		// Add each module as a dependency
+		modImplementation(fabricApi.module(it, "0.96.4+1.20.4"))
+	}
 }
 
 
 sourceSets {
     main {
         java {
+            srcDir("${rootProject.projectDir}/Multiworld-Common/src/main/java/com")
+            //srcDir("${rootProject.projectDir}/Multiworld-Fabric-1.17/src/main/java")
+
             // Needs fixing for 1.18:
-            exclude("me/isaiah/**/*.java")
-            exclude("**/Multiworld.mixins.json")
-            exclude("org/minecarts/**/*.java")
-			
-			srcDirs("src/main/java") 
+            //exclude("**/MixinWorld.java")
+            
+            srcDir("src/main/java")
         }
         resources {
-			 exclude("**/Multiworld.mixins.json")
+            srcDir("${rootProject.projectDir}/Multiworld-Common/src/main/resources")
         }
     }
 }
@@ -86,8 +95,8 @@ tasks.register<Copy>("copyReport2") {
     into("${project.rootDir}/output")
 }
 
-
 /*
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -118,4 +127,5 @@ publishing {
         }
     }
 }
+
 */
